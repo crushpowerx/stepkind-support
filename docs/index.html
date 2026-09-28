@@ -16,6 +16,8 @@
       h1 { max-width:620px; margin:0; font-size:clamp(2.2rem,7vw,4.2rem); line-height:1.02; letter-spacing:-.055em; }
       .lead { max-width:540px; margin:22px 0 0; font-size:1.12rem; color:var(--muted); }
       .contact { display:inline-flex; margin-top:25px; padding:14px 18px; border-radius:16px; background:var(--accent); color:#fff; text-decoration:none; font-weight:750; }
+      .email { margin-top:14px; font-size:.96rem; }
+      .copy { padding:0; border:0; background:transparent; color:var(--accent); font:inherit; font-weight:750; text-decoration:underline; cursor:pointer; }
       section { margin-top:22px; padding:30px; border:1px solid rgba(255,255,255,.82); border-radius:30px; background:rgba(255,255,255,.74); box-shadow:0 18px 50px rgba(28,91,85,.08); }
       h2 { margin:0 0 16px; font-size:1.38rem; letter-spacing:-.025em; }
       h3 { margin:25px 0 7px; font-size:1rem; }
@@ -33,6 +35,7 @@
         <h1>Підтримка StepKind</h1>
         <p class="lead">Твій ритм, крок за кроком. Ми допоможемо, якщо щось працює не так або маєш ідею для застосунку.</p>
         <a class="contact" href="mailto:app.step.kind@gmail.com?subject=StepKind%20%E2%80%94%20%D0%BF%D1%96%D0%B4%D1%82%D1%80%D0%B8%D0%BC%D0%BA%D0%B0">Написати в підтримку</a>
+        <p class="email">Або скопіюй адресу: <button class="copy" id="copy-email" type="button">app.step.kind@gmail.com</button></p>
       </header>
       <section>
         <h2>Швидка допомога</h2>
@@ -62,5 +65,13 @@
       </section>
       <footer>© 2026 StepKind</footer>
     </main>
+    <script>
+      document.getElementById('copy-email').addEventListener('click', async () => {
+        const button = document.getElementById('copy-email');
+        await navigator.clipboard.writeText('app.step.kind@gmail.com');
+        button.textContent = 'Адресу скопійовано';
+        setTimeout(() => { button.textContent = 'app.step.kind@gmail.com'; }, 1800);
+      });
+    </script>
   </body>
 </html>
