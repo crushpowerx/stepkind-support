@@ -10,14 +10,21 @@
       * { box-sizing:border-box; }
       body { margin:0; background:radial-gradient(circle at 88% 0,#f5f2d8 0 15%,transparent 15.1%),radial-gradient(circle at 0 100%,#bfe8e3 0 14%,transparent 14.1%),#d9efed; color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
       main { width:min(760px,calc(100% - 32px)); margin:0 auto; padding:72px 0 56px; }
+      [hidden] { display:none !important; }
+      .masthead { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
       .brand { display:flex; align-items:center; gap:12px; font-size:1.25rem; font-weight:800; letter-spacing:-.03em; }
       .mark { display:grid; place-items:center; width:42px; height:42px; border-radius:15px; background:rgba(255,255,255,.65); color:var(--accent); font-size:1.45rem; }
+      .languages { display:flex; gap:6px; padding:5px; border-radius:18px; background:rgba(255,255,255,.65); }
+      .languages a { padding:9px 12px; border-radius:13px; text-decoration:none; }
+      .languages a[aria-current="page"] { background:var(--accent); color:#fff; }
+      a:focus-visible,button:focus-visible { outline:3px solid var(--ink); outline-offset:4px; }
       header { padding:46px 0 34px; }
       h1 { max-width:620px; margin:0; font-size:clamp(2.2rem,7vw,4.2rem); line-height:1.02; letter-spacing:-.055em; }
       .lead { max-width:540px; margin:22px 0 0; font-size:1.12rem; color:var(--muted); }
       .contact { display:inline-flex; margin-top:25px; padding:14px 18px; border-radius:16px; background:var(--accent); color:#fff; text-decoration:none; font-weight:750; }
       .email { margin-top:14px; font-size:.96rem; }
       .copy { padding:0; border:0; background:transparent; color:var(--accent); font:inherit; font-weight:750; text-decoration:underline; cursor:pointer; }
+      .copy-status { margin-top:8px; font-size:.96rem; }
       section { margin-top:22px; padding:30px; border:1px solid rgba(255,255,255,.82); border-radius:30px; background:rgba(255,255,255,.74); box-shadow:0 18px 50px rgba(28,91,85,.08); }
       h2 { margin:0 0 16px; font-size:1.38rem; letter-spacing:-.025em; }
       h3 { margin:25px 0 7px; font-size:1rem; }
@@ -30,14 +37,29 @@
   </head>
   <body>
     <main>
-      <div class="brand"><span class="mark" aria-hidden="true">✦</span> StepKind</div>
+      <div class="masthead">
+        <div class="brand"><span class="mark" aria-hidden="true">✦</span> StepKind</div>
+        <nav class="languages" aria-label="Мова / Language">
+          <a href="?lang=uk" lang="uk" hreflang="uk" data-switch-language="uk" aria-current="page">Українська</a>
+          <a href="?lang=en" lang="en" hreflang="en" data-switch-language="en">English</a>
+        </nav>
+      </div>
       <header>
+        <div data-language="uk" lang="uk">
         <h1>Підтримка StepKind</h1>
         <p class="lead">Твій ритм, крок за кроком. Ми допоможемо, якщо щось працює не так або маєш ідею для застосунку.</p>
         <a class="contact" href="mailto:app.step.kind@gmail.com?subject=StepKind%20%E2%80%94%20%D0%BF%D1%96%D0%B4%D1%82%D1%80%D0%B8%D0%BC%D0%BA%D0%B0">Написати в підтримку</a>
-        <p class="email">Або скопіюй адресу: <button class="copy" id="copy-email" type="button">app.step.kind@gmail.com</button></p>
+        </div>
+        <div data-language="en" lang="en">
+          <h1>StepKind Support</h1>
+          <p class="lead">Your rhythm, step by step. We're here to help if something isn't working or you have an idea for the app.</p>
+          <a class="contact" href="mailto:app.step.kind@gmail.com?subject=StepKind%20%E2%80%94%20support">Contact support</a>
+        </div>
+        <p class="email"><span data-language="uk" lang="uk">Або скопіюй адресу:</span><span data-language="en" lang="en">Or copy our email address:</span> <button class="copy" id="copy-email" type="button">app.step.kind@gmail.com</button></p>
+        <p class="copy-status" id="copy-status" role="status" hidden></p>
       </header>
       <section>
+        <div data-language="uk" lang="uk">
         <h2>Швидка допомога</h2>
         <h3>Чому не видно дані про активність?</h3>
         <p>У StepKind натисни «Підключити Apple Health» і надай доступ до кроків, активних калорій та, за бажанням, сну. Доступ можна змінити в Налаштуваннях iPhone → Конфіденційність і безпека → Здоров’я → StepKind.</p>
@@ -45,8 +67,19 @@
         <p>Звички, цілі та їхні позначки зберігаються локально на твоєму пристрої. StepKind не вимагає акаунта.</p>
         <h3>Як повідомити про проблему?</h3>
         <p>Напиши нам на <a href="mailto:app.step.kind@gmail.com">app.step.kind@gmail.com</a> і, за можливості, додай скриншот та модель iPhone.</p>
+        </div>
+        <div data-language="en" lang="en">
+          <h2>Quick help</h2>
+          <h3>Why can't I see my activity data?</h3>
+          <p>Connect Apple Health in StepKind and allow access to steps, active calories and, optionally, sleep. You can change access in iPhone Settings → Privacy &amp; Security → Health → StepKind.</p>
+          <h3>Where is my data stored?</h3>
+          <p>Your habits, goals and completion records are stored locally on your device. StepKind does not require an account.</p>
+          <h3>How do I report a problem?</h3>
+          <p>Email us at <a href="mailto:app.step.kind@gmail.com">app.step.kind@gmail.com</a> and, if possible, include a screenshot and your iPhone model.</p>
+        </div>
       </section>
       <section id="privacy">
+        <div data-language="uk" lang="uk">
         <h2>Політика конфіденційності</h2>
         <p class="updated">Останнє оновлення: 28 вересня 2026 року</p>
         <p>StepKind створено для особистого відстеження активності й звичок. Ми поважаємо приватність і не продаємо персональні дані.</p>
@@ -62,15 +95,96 @@
         <p>Якщо політика зміниться, актуальна версія буде опублікована на цій сторінці.</p>
         <h3>Контакт</h3>
         <p>З питань приватності або підтримки: <a href="mailto:app.step.kind@gmail.com">app.step.kind@gmail.com</a>.</p>
+        </div>
+        <div data-language="en" lang="en">
+          <h2>Privacy Policy</h2>
+          <p class="updated">Last updated: September 28, 2026</p>
+          <p>StepKind is designed for personal activity and habit tracking. We respect your privacy and do not sell personal data.</p>
+          <h3>What data the app uses</h3>
+          <p>With your explicit permission, StepKind can read your step count, active calories and sleep data from Apple Health. You create your own habits, goals, reminders and completion records.</p>
+          <h3>How data is used</h3>
+          <p>Data is used only to display your progress in the app. StepKind does not send HealthKit data, habits or goals to our servers, sell them or use them for advertising.</p>
+          <h3>Storage and deletion</h3>
+          <p>StepKind data is stored locally on your device. You can revoke Apple Health access in iPhone settings. Deleting the app removes its local data; StepKind does not modify data in Apple Health.</p>
+          <h3>Reminders</h3>
+          <p>If you enable reminders, they are scheduled locally on your device. We do not send push notifications from a server.</p>
+          <h3>Changes to this policy</h3>
+          <p>If this policy changes, the latest version will be published on this page.</p>
+          <h3>Contact</h3>
+          <p>For privacy questions or support: <a href="mailto:app.step.kind@gmail.com">app.step.kind@gmail.com</a>.</p>
+        </div>
       </section>
       <footer>© 2026 StepKind</footer>
     </main>
     <script>
+      const translations = {
+        uk: {
+          title: 'StepKind — підтримка',
+          description: 'Підтримка та політика конфіденційності застосунку StepKind.',
+          copied: 'Адресу скопійовано',
+          copyFailed: 'Не вдалося скопіювати адресу. Скопіюй її вручну або натисни «Написати в підтримку».',
+        },
+        en: {
+          title: 'StepKind — Support',
+          description: 'Support and privacy policy for the StepKind app.',
+          copied: 'Email address copied',
+          copyFailed: 'Could not copy the address. Copy it manually or select “Contact support”.',
+        },
+      };
+      let currentLanguage = 'uk';
+      let copyStatusTimer;
+      const copyStatus = document.getElementById('copy-status');
+
+      function setLanguage(language) {
+        currentLanguage = language;
+        document.documentElement.lang = language;
+        document.title = translations[language].title;
+        document.querySelector('meta[name="description"]').content = translations[language].description;
+        document.querySelectorAll('[data-language]').forEach((element) => {
+          element.hidden = element.dataset.language !== language;
+        });
+        document.querySelectorAll('[data-switch-language]').forEach((link) => {
+          if (link.dataset.switchLanguage === language) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+        clearTimeout(copyStatusTimer);
+        copyStatus.hidden = true;
+        copyStatus.textContent = '';
+      }
+
+      const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+      const browserLanguages = navigator.languages || [navigator.language || 'uk'];
+      const browserLanguage = browserLanguages.map((language) => language.split('-')[0].toLowerCase())
+        .find((language) => Object.hasOwn(translations, language));
+      setLanguage(Object.hasOwn(translations, requestedLanguage) ? requestedLanguage : (browserLanguage || 'uk'));
+
+      document.querySelectorAll('[data-switch-language]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          // Keep ordinary link behavior for new-tab and modified clicks.
+          if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          const language = link.dataset.switchLanguage;
+          setLanguage(language);
+          const url = new URL(window.location.href);
+          url.searchParams.set('lang', language);
+          window.history.replaceState(null, '', url);
+        });
+      });
+
       document.getElementById('copy-email').addEventListener('click', async () => {
-        const button = document.getElementById('copy-email');
-        await navigator.clipboard.writeText('app.step.kind@gmail.com');
-        button.textContent = 'Адресу скопійовано';
-        setTimeout(() => { button.textContent = 'app.step.kind@gmail.com'; }, 1800);
+        clearTimeout(copyStatusTimer);
+        try {
+          await navigator.clipboard.writeText('app.step.kind@gmail.com');
+          copyStatus.textContent = translations[currentLanguage].copied;
+          copyStatus.hidden = false;
+          copyStatusTimer = setTimeout(() => { copyStatus.hidden = true; }, 2500);
+        } catch {
+          copyStatus.textContent = translations[currentLanguage].copyFailed;
+          copyStatus.hidden = false;
+        }
       });
     </script>
   </body>
