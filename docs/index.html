@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Підтримка та політика конфіденційності застосунку StepKind." />
     <title>StepKind — підтримка</title>
+    <link rel="icon" type="image/png" href="assets/stepkind-icon.png" />
+    <link rel="apple-touch-icon" href="assets/stepkind-icon.png" />
     <style>
       :root { --ink:#163d3a; --muted:#5d8682; --accent:#2c756e; }
       * { box-sizing:border-box; }
@@ -13,7 +15,7 @@
       [hidden] { display:none !important; }
       .masthead { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
       .brand { display:flex; align-items:center; gap:12px; font-size:1.25rem; font-weight:800; letter-spacing:-.03em; }
-      .mark { display:grid; place-items:center; width:42px; height:42px; border-radius:15px; background:rgba(255,255,255,.65); color:var(--accent); font-size:1.45rem; }
+      .mark { display:block; flex-shrink:0; width:48px; height:48px; border-radius:14px; object-fit:cover; }
       .languages { display:flex; gap:6px; padding:5px; border-radius:18px; background:rgba(255,255,255,.65); }
       .languages a { padding:9px 12px; border-radius:13px; text-decoration:none; }
       .languages a[aria-current="page"] { background:var(--accent); color:#fff; }
@@ -38,7 +40,7 @@
   <body>
     <main>
       <div class="masthead">
-        <div class="brand"><span class="mark" aria-hidden="true">✦</span> StepKind</div>
+        <div class="brand"><img class="mark" src="assets/stepkind-icon.png" width="48" height="48" alt="" /> StepKind</div>
         <nav class="languages" aria-label="Мова / Language">
           <a href="?lang=uk" lang="uk" hreflang="uk" data-switch-language="uk" aria-current="page">Українська</a>
           <a href="?lang=en" lang="en" hreflang="en" data-switch-language="en">English</a>

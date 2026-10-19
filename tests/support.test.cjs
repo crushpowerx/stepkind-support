@@ -7,6 +7,18 @@ const vm = require('node:vm');
 const html = fs.readFileSync(path.join(__dirname, '../docs/index.html'), 'utf8');
 const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
 
+test('brand and browser icons use the bundled StepKind app icon', () => {
+  const icon = 'assets/stepkind-icon.png';
+  assert.ok(html.includes(`<img class="mark" src="${icon}" width="48" height="48" alt=""`));
+  assert.ok(html.includes(`<link rel="icon" type="image/png" href="${icon}"`));
+  assert.ok(html.includes(`<link rel="apple-touch-icon" href="${icon}"`));
+  assert.doesNotMatch(html, /<span class="mark"[^>]*>✦<\/span>/);
+  const png = fs.readFileSync(path.join(__dirname, '../docs', icon));
+  assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+  assert.equal(png.readUInt32BE(16), png.readUInt32BE(20));
+  assert.ok(png.readUInt32BE(16) >= 512);
+});
+
 function createPage({ url = 'https://example.com/', languages = ['uk-UA'], clipboard } = {}) {
   const localized = [...html.matchAll(/data-language="(uk|en)"/g)].map((match) => ({ dataset: { language: match[1] }, hidden: false }));
   const links = ['uk', 'en'].map((language) => ({
